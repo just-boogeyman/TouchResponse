@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04A58A012CC15E7500D091F8 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A58A002CC15E7500D091F8 /* CustomView.swift */; };
 		0631E66F2CBED3D900F2785D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0631E66E2CBED3D900F2785D /* AppDelegate.swift */; };
 		0631E6712CBED3D900F2785D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0631E6702CBED3D900F2785D /* SceneDelegate.swift */; };
 		0631E6732CBED3D900F2785D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0631E6722CBED3D900F2785D /* ViewController.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04A58A002CC15E7500D091F8 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		0631E66B2CBED3D900F2785D /* HW26.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HW26.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0631E66E2CBED3D900F2785D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0631E6702CBED3D900F2785D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 				0631E66E2CBED3D900F2785D /* AppDelegate.swift */,
 				0631E6702CBED3D900F2785D /* SceneDelegate.swift */,
 				0631E6722CBED3D900F2785D /* ViewController.swift */,
+				04A58A002CC15E7500D091F8 /* CustomView.swift */,
 				0631E6772CBED3DB00F2785D /* Assets.xcassets */,
 				0631E6792CBED3DB00F2785D /* LaunchScreen.storyboard */,
 				0631E67C2CBED3DB00F2785D /* Info.plist */,
@@ -135,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0631E6732CBED3D900F2785D /* ViewController.swift in Sources */,
+				04A58A012CC15E7500D091F8 /* CustomView.swift in Sources */,
 				0631E66F2CBED3D900F2785D /* AppDelegate.swift in Sources */,
 				0631E6712CBED3D900F2785D /* SceneDelegate.swift in Sources */,
 			);

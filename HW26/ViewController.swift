@@ -9,11 +9,13 @@ import UIKit
 
 class ViewController: UIViewController {
 	
-	private let viewA = UIView()
-	private let viewB = UIView()
-	private let viewC = UIView()
-	private let viewD = UIView()
-	private let viewE = UIView()
+	private let viewA = CustomView(color: .lightGray)
+	private let viewB = CustomView(color: .red)
+	private let viewC = CustomView(color: .blue)
+	private let viewD = CustomView(color: .yellow)
+	private let viewE = CustomView(color: .green)
+	
+	private let nameViewLable = UILabel()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -21,12 +23,17 @@ class ViewController: UIViewController {
 		setupViews()
 		addLabels()
 		setupLayout()
+		
 	}
 }
 
 private extension ViewController {
 	func addSubViews() {
+		[viewA, viewB, viewC, viewD, viewE].forEach{
+			$0.delegate = self
+		}
 		view.addSubview(viewA)
+		view.addSubview(nameViewLable)
 		
 		viewA.addSubview(viewB)
 		viewA.addSubview(viewC)
@@ -36,12 +43,13 @@ private extension ViewController {
 	
 	func setupViews() {
 		view.backgroundColor = .white
+		nameViewLable.text = "Здась будет название выбранной вью"
 		
-		viewA.backgroundColor = .lightGray
-		viewB.backgroundColor = .red
-		viewC.backgroundColor = .blue
-		viewD.backgroundColor = .yellow
-		viewE.backgroundColor = .green
+		viewA.nameInstance = "viewA"
+		viewB.nameInstance = "viewB"
+		viewC.nameInstance = "viewC"
+		viewD.nameInstance = "viewD"
+		viewE.nameInstance = "viewE"
 	}
 	
 	func addLabels() {
@@ -51,7 +59,6 @@ private extension ViewController {
 		addLabel(to: viewD, text: "D")
 		addLabel(to: viewE, text: "E")
 	}
-	
 }
 
 // MARK: -> Private Methods
@@ -79,6 +86,7 @@ private extension ViewController {
 		viewC.translatesAutoresizingMaskIntoConstraints = false
 		viewD.translatesAutoresizingMaskIntoConstraints = false
 		viewE.translatesAutoresizingMaskIntoConstraints = false
+		nameViewLable.translatesAutoresizingMaskIntoConstraints = false
 		
 		NSLayoutConstraint.activate([
 			
@@ -106,7 +114,17 @@ private extension ViewController {
 			viewE.centerXAnchor.constraint(equalTo: viewC.centerXAnchor),
 			viewE.widthAnchor.constraint(equalToConstant: 80),
 			viewE.heightAnchor.constraint(equalToConstant: 120),
+			
+			nameViewLable.topAnchor.constraint(equalTo: viewA.bottomAnchor, constant: 100),
+			nameViewLable.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			nameViewLable.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
+			nameViewLable.heightAnchor.constraint(equalToConstant: 75)
 		])
 	}
 }
 
+extension ViewController: ICustomViewDelegate {
+	func pressed(nameView: String) {
+		nameViewLable.text = nameView
+	}
+}
