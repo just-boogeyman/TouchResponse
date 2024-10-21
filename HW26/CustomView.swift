@@ -30,32 +30,18 @@ class CustomView: UIView {
 	}
 	
 	override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-		super.hitTest(point, with: event)
-		
-		guard isUserInteractionEnabled, !isHidden, alpha > 0 else {
-			return nil
-		}
-		
-		if self.point(inside: point, with: event) {
-			for subview in subviews.reversed() {
-				let convertedPoint = subview.convert(point, from: self)
-				if let hitView = subview.hitTest(convertedPoint, with: event) {
-					return hitView
-				}
-			}
-			delegate?.pressed(nameView: self.nameInstance ?? "nil")
-			return self
-		}
-		return nil
+		guard let currentView = super.hitTest(point, with: event) as? CustomView else { return nil }
+		delegate?.pressed(nameView: currentView.nameInstance ?? "nil")
+		return currentView
 	}
 	
 	override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
 		if super.point(inside: point, with: event) {
 			return true
 		}
-		for subview in subviews.reversed() {
+		for subview in subviews {
 			let convertedPoint = subview.convert(point, from: self)
-			if self.point(inside: convertedPoint, with: event) {
+			if subview.point(inside: convertedPoint, with: event) {
 				return true
 			}
 		}
